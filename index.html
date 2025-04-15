@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Calculator with Math Forum</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Tetris block decorations -->
+    <div class="tetris-decoration tetris-i"></div>
+    <div class="tetris-decoration tetris-j"></div>
+    <div class="tetris-decoration tetris-l"></div>
+    <div class="tetris-decoration tetris-o"></div>
+    <div class="tetris-decoration tetris-s"></div>
+    <div class="tetris-decoration tetris-t"></div>
+    <div class="tetris-decoration tetris-z"></div>
+
+    <div class="tetris-title">TETRIS CALCULATOR</div>
+    
+    <div class="calculator-container">
+        <div class="controls">
+            <button id="clear-history-btn">CLEAR HISTORY</button>
+            <div class="toggle-container">
+                <span>LIGHT</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>DARK</span>
+            </div>
+        </div>
+
+        <div class="history-container" id="history">
+            <!-- History items will be added here dynamically -->
+        </div>
+        
+        <div class="calculator">
+            <div class="display">
+                <div class="memory-display" id="memory-display"></div>
+                <div id="previous-operand"></div>
+                <div id="current-operand">0</div>
+            </div>
+            
+            <!-- Memory Buttons -->
+            <button class="memory-button" onclick="memoryClear()">MC</button>
+            <button class="memory-button" onclick="memoryRecall()">MR</button>
+            <button class="memory-button" onclick="memoryAdd()">M+</button>
+            <button class="memory-button" onclick="memorySubtract()">M-</button>
+            <button class="memory-button" onclick="memoryStore()">MS</button>
+            
+            <!-- Scientific Functions Row 1 -->
+            <button class="function-button" onclick="square()">x²</button>
+            <button class="function-button" onclick="squareRoot()">√</button>
+            <button class="function-button" onclick="calculatePower()">xʸ</button>
+            <button class="function-button" onclick="calculateSin()">sin</button>
+            <button class="function-button" onclick="calculateCos()">cos</button>
+            
+            <!-- Scientific Functions Row 2 -->
+            <button class="function-button" onclick="calculateFactorial()">x!</button>
+            <button class="function-button" onclick="calculateLog()">log</button>
+            <button class="function-button" onclick="calculateLn()">ln</button>
+            <button class="function-button" onclick="calculateTan()">tan</button>
+            <button class="function-button" onclick="calculatePi()">π</button>
+            
+            <!-- Calculator Buttons -->
+            <button class="span-two" onclick="clearAll()">AC</button>
+            <button onclick="deleteDigit()">DEL</button>
+            <button class="operation-button" onclick="appendOperator('÷')">÷</button>
+            <button class="operation-button" onclick="appendOperator('%')">%</button>
+            
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button class="operation-button" onclick="appendOperator('×')">×</button>
+            <button class="operation-button" onclick="appendOperator('(')">(</button>
+            
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button class="operation-button" onclick="appendOperator('-')">-</button>
+            <button class="operation-button" onclick="appendOperator(')')">)</button>
+            
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button class="operation-button" onclick="appendOperator('+')">+</button>
+            <button class="operation-button" onclick="appendOperator('e')">e</button>
+            
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button class="span-two equals-button" onclick="calculate()">=</button>
+            <button onclick="toggleSign()">±</button>
+        </div>
+    </div>
+    
+    <!-- Math Blog Section -->
+    <div class="math-blog-container">
+        <h2 class="blog-title">MATH SOLUTIONS FORUM</h2>
+        
+        <!-- Form for submitting new math questions -->
+        <div class="post-question-container">
+            <h3>Post Your Math Problem</h3>
+            <form id="post-form">
+                <div class="form-group">
+                    <label for="username">Name (optional):</label>
+                    <input type="text" id="username" placeholder="Anonymous">
+                </div>
+                <div class="form-group">
+                    <label for="equation">Your Equation/Problem:</label>
+                    <textarea id="equation" required placeholder="Enter your math problem here (e.g., 2x + 5 = 13)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="context">Additional Context (optional):</label>
+                    <textarea id="context" placeholder="Add any additional information or context for your problem"></textarea>
+                </div>
+                <button type="submit" class="post-button">POST PROBLEM</button>
+            </form>
+        </div>
+        
+        <!-- Container for existing posts -->
+        <div class="blog-posts-container">
+            <h3>Community Problems & Solutions</h3>
+            <div class="filter-container">
+                <label for="filter-posts">Filter by:</label>
+                <select id="filter-posts">
+                    <option value="all">All Problems</option>
+                    <option value="solved">Solved Only</option>
+                    <option value="unsolved">Unsolved Only</option>
+                </select>
+            </div>
+            
+            <div id="posts-list">
+                <!-- Posts will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+    <script src="math-forum.js"></script>
+</body>
+</html>
